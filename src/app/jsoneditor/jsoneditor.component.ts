@@ -65,7 +65,8 @@ export class FileDatabase {
 })
 export class JsoneditorComponent  {
 
-jsonString: string;
+ jsonString: string;
+
 
   nestedTreeControl: NestedTreeControl<FileNode>;
   nestedDataSource: MatTreeNestedDataSource<FileNode>;
@@ -101,9 +102,22 @@ jsonString: string;
       return accumulator.concat(node);
     }, []);
   }
+
+  showFormated(){
+
+  this.jsonString = JSON.stringify(JSON.parse(this.jsonString), undefined, 2); 
+  
+
+  }
+
+  showUnformated(){
+
+  this.jsonString = JSON.stringify(JSON.parse(this.jsonString), undefined, 0); 
+  }
   
   showTree(){
   console.log("here"+ this.jsonString);
+
    const dataObject = JSON.parse(this.jsonString);
 
     // Build the tree nodes from Json object. The result is a list of `FileNode` with nested

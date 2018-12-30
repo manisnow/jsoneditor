@@ -30,9 +30,15 @@
 }
 
 .example-viewport {
-  width: 575Px;
+  width: 583Px;
   height: 500Px;
   border: 1px solid black;
+}
+
+
+
+.example-item {
+  height: 50px;
 }
 
 .example-item-detail {
@@ -112,4 +118,12 @@ div{
     width: 100vw;
     height: 100vh;
     overflow-y: scroll;
+}
+
+.example-icon {
+  padding: 0 14px;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
 }

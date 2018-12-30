@@ -1,0 +1,13 @@
+.logo-white {
+    background-size: cover;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    display: block;
+    height: 46px;
+    margin-top: -8px;
+    width: 170px;
+    -webkit-transition: -webkit-transform .3s;
+    transition: -webkit-transform .3s;
+    transition: transform .3s;
+    transition: transform .3s,-webkit-transform .3s;
+}
