@@ -1,22 +1,23 @@
 
-<div class="ib" >
-
-
-<cdk-virtual-scroll-viewport [itemSize]="100" class="example-viewport"> 
 <mat-toolbar>
 <mat-toolbar-row>
-     <mat-icon class="example-icon" (click)="showFormated()">view_headline</mat-icon>
-     <mat-icon class="example-icon" (click)="showUnformated()">view_module</mat-icon>
+     <mat-icon  matTooltip="format the Json" class="example-icon" (click)="showFormated()">view_headline</mat-icon>
+     <mat-icon  matTooltip="remove white space" class="example-icon" (click)="showUnformated()">view_module</mat-icon>
     <span class="example-spacer"></span>
-    <mat-icon class="example-icon" (click)="showTree()">arrow_right_alt</mat-icon>
+    <mat-icon  matTooltip="tree view" class="example-icon" (click)="showTree()">arrow_right_alt</mat-icon>
   </mat-toolbar-row>
 </mat-toolbar>
-<mat-form-field class="example-full-width">
-    <textarea matInput placeholder="Enter Json" matTextareaAutosize  [(ngModel)]="jsonString" (change)="showTree()"></textarea>
-  </mat-form-field>
-</cdk-virtual-scroll-viewport>
-</div>
 
+<div class="ib" >
+ 
+
+
+<mat-form-field class="example-full-width">
+    <textarea matInput placeholder="Enter Json" matTextareaAutosize
+            [(ngModel)]="jsonString" (change)="showTree()"></textarea>
+  </mat-form-field>
+
+</div>
 <div class="ib" >
 <cdk-virtual-scroll-viewport [itemSize]="18 * 7" class="example-viewport"> 
 <mat-tree [dataSource]="nestedDataSource" [treeControl]="nestedTreeControl" class="example-tree">

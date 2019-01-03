@@ -105,26 +105,52 @@ export class JsoneditorComponent  {
 
   showFormated(){
 
-  this.jsonString = JSON.stringify(JSON.parse(this.jsonString), undefined, 2); 
-  
+  this.stringfyJson(2);
+  }
 
+  stringfyJson(space){
+
+try{
+  this.jsonString = JSON.stringify(JSON.parse(this.jsonString), undefined, space);
+   }catch(error){
+  this.handleError(error); 
+   }
+  
   }
 
   showUnformated(){
-
-  this.jsonString = JSON.stringify(JSON.parse(this.jsonString), undefined, 0); 
+   this.stringfyJson(0);
   }
   
   showTree(){
   console.log("here"+ this.jsonString);
-
+try{
    const dataObject = JSON.parse(this.jsonString);
+ 
 
     // Build the tree nodes from Json object. The result is a list of `FileNode` with nested
     //     file node as children.
     const data = this.buildFileTree(dataObject, 0);
   this.nestedDataSource.data = data
 
+ } catch(error){
+  this.handleError(error);
+  }
   }
  
-}
+
+
+handleError(error) {
+   let errorMessage = '';
+   if (error.error instanceof ErrorEvent) {
+     // client-side error
+     errorMessage = `Error: ${error.error.message}`;
+   } else {
+     // server-side error
+     errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+   }
+   window.alert(errorMessage);
+   //return throwError(errorMessage);
+ }
+
+ }
