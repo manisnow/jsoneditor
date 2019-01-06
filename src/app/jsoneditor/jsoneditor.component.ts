@@ -2,6 +2,15 @@ import {NestedTreeControl} from '@angular/cdk/tree';
 import {Component, Injectable} from '@angular/core';
 import {MatTreeNestedDataSource} from '@angular/material/tree';
 import {BehaviorSubject} from 'rxjs';
+import { JsonTag } from './jsonTag'
+
+
+export const JSONTAGS: JsonTag[] = [
+  { openTag: '"', endTag: '"' },
+  { openTag: '{', endTag: '}' },
+  { openTag: ':', endTag: '' },
+  { openTag: '[', endTag: ']' },
+  ];
 
 
 /**
@@ -64,10 +73,9 @@ export class FileDatabase {
 
 })
 export class JsoneditorComponent  {
-
+ jsonTags = JSONTAGS;
  jsonString: string;
-
-
+ 
   nestedTreeControl: NestedTreeControl<FileNode>;
   nestedDataSource: MatTreeNestedDataSource<FileNode>;
 
@@ -123,7 +131,7 @@ try{
   }
   
   showTree(){
-  console.log("here"+ this.jsonString);
+  
 try{
    const dataObject = JSON.parse(this.jsonString);
  
@@ -138,7 +146,19 @@ try{
   }
   }
  
+ onKey(event: any,textarea) { // without type info
+ 
+ var key = String.fromCharCode(event.keyCode)
 
+ for(let tag of this.jsonTags){
+    if(tag.openTag.includes(event.key)){
+        textarea.value = textarea.value.slice(0,textarea.selectionStart) + tag.endTag + textarea.value.slice(textarea.selectionStart);
+       textarea.setSelectionStart =textarea.selectionStart;
+    }
+
+
+  }
+ }
 
 handleError(error) {
    let errorMessage = '';

@@ -13,8 +13,8 @@
 
 
 <mat-form-field class="example-full-width">
-    <textarea matInput placeholder="Enter Json" matTextareaAutosize
-            [(ngModel)]="jsonString" (change)="showTree()"></textarea>
+    <textarea matInput #jsontextarea placeholder="Enter Json" matTextareaAutosize
+            [(ngModel)]="jsonString" (keyup)="onKey($event,jsontextarea)" ></textarea>
   </mat-form-field>
 
 </div>
