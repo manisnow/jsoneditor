@@ -5,6 +5,10 @@
      <mat-icon  matTooltip="remove white space" class="example-icon" (click)="showUnformated()">view_module</mat-icon>
     <span class="example-spacer"></span>
     <mat-icon  matTooltip="tree view" class="example-icon" (click)="showTree()">arrow_right_alt</mat-icon>
+
+    <input #fileUpload type="file" (click)="fileUpload.value = null"(change)="importFile($event)" style="display:none"
+accept="json/*">
+<mat-icon  matTooltip="Open File" class="example-icon"  (click)="fileUpload.click()">open_in_browser</mat-icon>
   </mat-toolbar-row>
 </mat-toolbar>
 

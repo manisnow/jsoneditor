@@ -160,6 +160,25 @@ try{
   }
  }
 
+ importFile(event) {
+
+if (event.target.files.length == 0) {
+   console.log("No file selected!");
+   return
+}
+  let file: File = event.target.files[0];
+  // after here 'file' can be accessed and used for further process
+ var myReader:FileReader = new FileReader();
+ var me = this;
+    myReader.onloadend = function(e){
+      // you can perform an action with readed data here
+     console.log(this.result);
+      me.jsonString = this.result.toString();
+    }
+
+    myReader.readAsText(file);
+}
+
 handleError(error) {
    let errorMessage = '';
    if (error.error instanceof ErrorEvent) {
