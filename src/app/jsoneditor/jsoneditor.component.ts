@@ -179,6 +179,19 @@ if (event.target.files.length == 0) {
     myReader.readAsText(file);
 }
 
+saveFile(){
+  
+     
+  var blob = new Blob([this.jsonString], {type: 'text/plain'});
+      var anchor = document.createElement('a');
+
+anchor.download = "myJson.json";
+anchor.href = (window.URL).createObjectURL(blob);
+anchor.dataset.downloadurl = ['text/plain', anchor.download, anchor.href].join(':');
+anchor.click();
+
+}
+
 handleError(error) {
    let errorMessage = '';
    if (error.error instanceof ErrorEvent) {
